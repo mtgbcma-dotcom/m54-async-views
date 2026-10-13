@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %}Resultado da contagem{% endblock %}
+
+{% block conteudo %}
+<h1>Contagem concluída</h1>
+<div class="painel">
+    <p>Duração solicitada: <strong>{{ segundos }} segundo{{ segundos|pluralize:"s" }}</strong></p>
+    <p>Tempo medido da contagem:</p>
+    <p class="tempo">{{ tempo_total|floatformat:2 }} s</p>
+    <table>
+        <thead><tr><th scope="col">Contador</th><th scope="col">Tempo acumulado</th></tr></thead>
+        <tbody>
+            {% for registro in registros %}
+            <tr><td>{{ registro.segundo }}</td><td>{{ registro.tempo|floatformat:2 }} s</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="nota">O tempo medido pode ficar um pouco acima do solicitado devido ao agendamento e à execução do código.</p>
+    <a class="botao" href="{% url 'inicio' %}">Nova contagem</a>
+</div>
+{% endblock %}

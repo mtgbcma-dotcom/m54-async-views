@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}Iniciar contagem{% endblock %}
+
+{% block conteudo %}
+<h1>Contagem assíncrona no Django</h1>
+<p>Escolha a duração e inicie uma contagem de tempo.</p>
+<div class="painel">
+    <form method="get" action="{% url 'contador_tempo' %}">
+        <label for="segundos">Duração em segundos</label>
+        <input id="segundos" name="segundos" type="number" min="1" max="10" value="3" required>
+        <button type="submit">Iniciar contagem</button>
+    </form>
+    <p class="nota">Aguarde a duração escolhida. O resultado será exibido ao finalizar a contagem.</p>
+</div>
+{% endblock %}
